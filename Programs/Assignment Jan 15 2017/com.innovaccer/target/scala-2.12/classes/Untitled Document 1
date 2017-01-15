@@ -1,0 +1,26 @@
+package com.innovaccer
+class InnoString (private val a: String) {
+def +(that: InnoString) = 
+	new InnoString ((this.a).concat(that.a))
+
+def ==(that: InnoString): Boolean=
+	return ((that.a).equals(this.a))
+
+
+def isPalindrome():Boolean={
+
+	val p = this.a
+	var x = p.length()-1
+	var rev = ""
+	while (x>=0)
+	{
+		rev += p.charAt(x)
+		x-=1
+	}
+	if (p.equalsIgnoreCase(rev)) 
+		return true
+	else
+		return false
+	}
+override def toString = a 
+}

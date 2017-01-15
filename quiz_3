@@ -1,0 +1,85 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.  How to define a Class, fields, constructor, and methods?
+
+class Point(xc: Int, yc: Int) {
+   var x: Int = xc
+   var y: Int = yc
+
+   def move(dx: Int, dy: Int) {
+      x = x + dx
+      y = y + dy
+      println ("Point x location : " + x);
+      println ("Point y location : " + y);
+   }
+}
+
+WHERE Point is the name of the class, xc and yc act as parametrized constructors, x and y are the class variables or the feilds ans the move is the class method.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.  What is an overridden method?
+
+Method which is present in the parent class can be overriden in the child class inherited from the parent and has the same name as the function in the parent class.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. How to do operator overloading in Scala?
+
+operators like +, -, * etc . can be overloaded and can be used to perform operations with the objects of the class.
+Well, operator overloading - just like method overloading - allows you to redefine their behaviour for a particular type, and give them meaning for your own custom classes.
+
+class Complex(val real : Double, val imag : Double) {
+   
+  def +(that: Complex) =
+            new Complex(this.real + that.real, this.imag + that.imag)
+   
+  def -(that: Complex) =
+            new Complex(this.real - that.real, this.imag - that.imag)
+ 
+  override def toString = real + " + " + imag + "i"
+   
+}
+ 
+object Complex {
+  def main(args : Array[String]) : Unit = {
+       var a = new Complex(4.0,5.0)
+       var b = new Complex(2.0,3.0)
+       println(a)  // 4.0 + 5.0i
+       println(a + b)  // 6.0 + 8.0i
+       println(a - b)  // 2.0 + 2.0i
+  }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.  What are companion objects? What purpose do they serve?
+
+A companion object differs from other objects as it has access rights to the class/trait that other objects do not. In particular it can access methods and fields that are private in the class/trait. An analog to a companion object in Java is having a class with static methods.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5.  What is the purpose of apply and unapply methods in companion objects?
+
+
+Firstly, apply and unapply are not necessarily opposites of each other. Indeed, if you define one on a class/object, you don't have to define the other.
+
+apply
+
+apply is probably the easier to explain. Essentially, when you treat your object like a function, apply is the method that is called, so, Scala turns:
+
+obj(a, b, c) to obj.apply(a, b, c).
+
+unapply
+
+In Scala, patterns can be defined independently of case classes. To this end, a method named unapply is defined to yield a so-called extractor. An extractor can be thought of as a special method that reverses the effect of applying a particular object on some inputs. Its purpose is to ‘extract’ the inputs that were present before the ‘apply’ operation. For instance, the following code defines an extractor object Twice.
+
+object Twice {
+  def apply(x: Int): Int = x * 2
+  def unapply(z: Int): Option[Int] = if (z%2 == 0) Some(z/2) else None
+}
+object TwiceTest extends App {
+  val x = Twice(21)
+  x match { case Twice(n) => Console.println(n) } // prints 21
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,42 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.  WHY IS SCALA A FUNCTIONAL PROGRAMMING LANGUAGE?
+
+scala is not a fully functional programming language but a hybrid functional programming language. Scala smoothly integrates the features of object-oriented and functional languages. Scala is compiled to run on the Java Virtual Machine.
+Scala is a pure object-oriented language in the sense that every value is an object. 
+Scala is also a functional language in the sense that every function is a value and every value is an object so ultimately every function is an object.
+
+Scala provides a lightweight syntax for defining anonymous functions, it supports higher-order functions, it allows functions to be nested, and supports currying.
+Scala is compiled into Java Byte Code which is executed by the Java Virtual Machine 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.  DIFFERENCE BETWEEN VAL AND VAR?
+
+VAR :- It is a variable that can change value and this is called mutable variable
+VAL :- It is a variable that cannot be changed and this is called immutable variable.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.  What is an "Object" in Scala?
+
+ A class is a blueprint for objects. Once we define a class, we can create objects from the class blueprint with the keyword new. Through the object we can use all functionalities of the defined class.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.  What is an Application in Scala and how to define one?
+
+The App trait is a convenient way of creating an executable scala program. The difference to the main method altenative is that the App trait uses the delayed initalization feature.
+
+Objects inheriting the App trait instead make use of Scala 2.9’s delayed initialization feature to execute the whole body as part of an inherited main method.
+
+Another new feature of the App scheme is that command line arguments are now accessible via the args value (which is inherited from trait App)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+What is the Unit return type?
+
+It corresponds to no value which is same as void.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

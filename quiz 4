@@ -1,0 +1,78 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.  What is SBT? How to create a brand new project in SBT from the CLI?
+
+sbt Is an open source build tool for Scala and Java projects, similar to Java's Maven or Ant. Its main features are: native support for compiling Scala code and integrating with many Scala test frameworks.
+
+shriyank@shriyank-ThinkPad:~/Programs/SBT$ mkdir hello
+shriyank@shriyank-ThinkPad:~/Programs/SBT$ cd hello/
+shriyank@shriyank-ThinkPad:~/Programs/SBT/hello$ sbt
+[info] Set current project to hello (in build file:/home/shriyank/Programs/SBT/hello/)
+> run
+[info] Updating {file:/home/shriyank/Programs/SBT/hello/}hello...
+[info] Resolving org.fusesource.jansi#jansi;1.4 ...
+[info] Done updating.
+[info] Compiling 1 Scala source to /home/shriyank/Programs/SBT/hello/target/scala-2.10/classes...
+[info] 'compiler-interface' not yet compiled for Scala 2.10.6. Compiling...
+[info]   Compilation completed in 10.626 s
+[info] Running hello 
+hello
+[success] Total time: 15 s, completed 15 Jan, 2017 11:50:00 AM
+> 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. How to write your own basic build.sbt?
+
+write the sbt version so that all people can build on the same version
+
+sbt.version = 0.13.13
+
+A build definition is defined in build.sbt, and it consists of a set of projects (of type Project). Because the term project can be ambiguous, we often call it a subproject in this guide.
+
+Each subproject is configured by key-value pairs.
+
+For example, one key is name and it maps to a string value, the name of your subproject. The key-value pairs are listed under the .settings(...) method as follows:
+
+lazy val root = (project in file("."))
+  .settings(
+    name := "Hello",
+    scalaVersion := "2.12.1"
+  )Each entry is called a setting expression. Some among them are also called task expressions. We will see more on the difference later in this page.
+
+A setting expression consists of three parts:
+
+Left-hand side is a key.
+Operator, which in this case is :=
+Right-hand side is called the body, or the setting body.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. What do SBT tasks clean, compile and run do?
+
+clean is used to delete the temporary files which the test creates
+
+cleanFiles <+= baseDirectory { base => base / "temp" }
+
+where temp is the folder containing all the temporary files.
+
+compile is used to generate resource files for the main
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.  How would you import an existing SBT project as a new project in IntelliJ?
+
+Make sure you have the scala plugin for intellij. Go file>new>'project from existing source', select your project to import. Go to build.sbt and there should be a prompt to import the packages.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5.  How would you run SBT tasks from within IntelliJ?
+
+ IntelliJ now allows you to create a run configuration for an SBT task. You create the Run Configuration by :
+
+choosing "Edit configurations" from the "Run" menu (or the toolbar popup)
+click the "+" button to add a configuration and select "SBT Task" as the type of configuration you want to make.
+fill out the details such as the name of the task and the working directory if necessary
+You can now run the task in the same way as any other run configuration; select it in the run configuration popup in the toolbar and click the run button
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
